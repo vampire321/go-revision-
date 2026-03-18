@@ -18,9 +18,8 @@ func (c *Cat) Speak() string{
 	return "Meow!"
 }
 
-func inter() {
+func main() {
 	var s Speaker
-
 	d := Dog{}
 	s=d
 	fmt.Println(s.Speak())
