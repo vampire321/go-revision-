@@ -11,3 +11,5 @@ func structs() {
 	fmt.Println(Vertex{1, 2})
 }
 
+
+
