@@ -25,5 +25,17 @@ func personHandler(w http.ResponseWriter,r *http.Request){
 		return
 	}
 
-	
+	//validation
+	if p.Name == ""{
+		 http.Error(w, "name is required", http.StatusBadRequest)
+        return
+    }
+	response := map[string]any{
+		"message": "hello"+p.Name,
+		"age": p.Age,
+	}
+	w.Header().Set("Content-Type","application/json")
+
+
+}
 	
