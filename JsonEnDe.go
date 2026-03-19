@@ -35,7 +35,12 @@ func personHandler(w http.ResponseWriter,r *http.Request){
 		"age": p.Age,
 	}
 	w.Header().Set("Content-Type","application/json")
-
-
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
+}
+func main(){
+	http.HandleFunc("/person",personHandler)
+	fmt.Println("istening on :8080")
+	http.ListenAndServe(":8080",nil)
 }
 	

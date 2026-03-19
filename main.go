@@ -9,7 +9,7 @@ func HealthHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "ok")
 }
 
-func main() {
+func basic() {
 	http.HandleFunc("/health", HealthHandler)
 	fmt.Println("starting the server at :8080")
 	err := http.ListenAndServe(":8080", nil)
