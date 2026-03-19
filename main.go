@@ -1,9 +1,19 @@
 package main
+
 import (
-	"flag"
+	"fmt"
+	"net/http"
 )
-func main(){
-	flag.PrintDefaults()
-	variable()
-	structs()
+
+func HealthHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "ok")
+}
+
+func main() {
+	http.HandleFunc("/health", HealthHandler)
+	fmt.Println("starting the server at :8080")
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println("server isnt working")
+	}
 }
