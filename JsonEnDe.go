@@ -42,7 +42,7 @@ func personHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response) //converts a go value to Json and write it directly to the responseWriter
 }
-func main() {
+func Encode() {
 	http.HandleFunc("/person", personHandler)
 	fmt.Println("istening on :8080")
 	http.ListenAndServe(":8080", nil)
