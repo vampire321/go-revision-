@@ -1,0 +1,30 @@
+package interface
+
+import "fmt"
+
+type speaker interface {
+    Speak() string
+}
+
+type Dog struct{}
+
+func (d Dog) Speak() string{
+    return "bow"
+}
+
+type Cat struct{}
+
+func (c *cat) Speak() string{
+    return "meow"
+}
+
+func main(){
+    var s struct
+    d = Dog{}
+    s=d
+    fmt.Println(s.Speak())
+
+    c:=Cat{}
+    s=&c
+    fmt.Println(s.Speak())
+}
