@@ -5,13 +5,13 @@ import (
     "sync"
 )
 
-func checkURL(url string, wg *sync.WaitGroup) {
+func checkUrL(url string, wg *sync.WaitGroup) {
     defer wg.Done() // signals "I am finished" when this function returns
     // defer means: run this line when the function exits, no matter what
     fmt.Println("checking:", url)
 }
 
-func main() {
+func startchecks() {
     urls := []string{
         "https://google.com",
         "https://github.com",
@@ -22,7 +22,7 @@ func main() {
 
     for _, url := range urls {
         wg.Add(1)          // tell WaitGroup: one more goroutine starting
-        go checkURL(url, &wg) // launch goroutine — pass &wg (pointer)
+        go checkUrL(url, &wg) // launch goroutine — pass &wg (pointer)
     }
 
     wg.Wait() // BLOCK here until all goroutines call wg.Done()
