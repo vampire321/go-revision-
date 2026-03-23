@@ -28,3 +28,4 @@ func main(){
 	wg.Wait()
 	fmt.Println("counter:",counter) //it should print 1000, often isnt
 }
+//to do := Once i must check for the questions of yesterday 
