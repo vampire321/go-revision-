@@ -13,11 +13,12 @@ type Person struct {
 }
 
 // personHandler function acts as a translator between the Internet(Json) and go code(Structs)
-func personHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+func personHandler(w http.ResponseWriter , r *http.Request){
+	if r.Method != http.MethodPost{
+		http.Error(w,"method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
+
 	//The translator(json decoding) it decode request body into person struct
 	var p Person
 	err := json.NewDecoder(r.Body).Decode(&p) //as you find json key related to person struct you store it in an p
