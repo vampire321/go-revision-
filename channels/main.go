@@ -15,18 +15,18 @@ func producer(ch chan<- string){
 
 func consumer(ch <-chan string) {
 	// <-chan means "receive-only channel" - only can recieve
-	for url := range ch {
+	for urls := range ch {
 		//Recives untill the channel is closed 
-		fmt.Println("recieved:", url)
+		fmt.Println("recieved:", urls)
 	}
 
 	fmt.Println("channel closed,consumer done")
 }
 
 func main() {
-	//made an unbufferd channel of strings
+	//made an unbufferd channel of strings and converted into buffered channel
 	ch := make(chan string , 3)
 
-	go producer(ch)
+	go producer(ch) //without go it blocks waiting for a reciver because both producer and consumer are at main , but there is no goroutine to recieve 
 	consumer(ch)
 }
