@@ -10,7 +10,7 @@ func producer(ch chan<- string){
         fmt.Println("sending:", url)
 		ch <- url //sernding url into the channel
 	}
-	close(ch) //signals:=no mre values will be sent
+	close(ch) //signals:=no more values will be sent
 }
 
 func consumer(ch <-chan string) {
