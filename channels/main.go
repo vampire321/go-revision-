@@ -25,7 +25,7 @@ func consumer(ch <-chan string) {
 
 func main() {
 	//made an unbufferd channel of strings
-	ch := make(chan string)
+	ch := make(chan string , 3)
 
 	go producer(ch)
 	consumer(ch)
