@@ -12,7 +12,7 @@ func sending(ch1 chan<- int){
 		close(ch1)
 	}
 	func main(){
-	ch1 := make(chan int)
+	ch1 := make(chan int, 5)
 	go sending(ch1)
 	for number := range ch1{
 		fmt.Println("received:", number)
