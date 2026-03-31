@@ -7,10 +7,11 @@ import(
 )
 
 func downloadfile(filename string, wg *sync.WaitGroup){
-	defer wg.Done() //withput these the program hangs for ever at wg.Wait() because the cpunter never reaches the zero (this is called the deadlock)
+	defer wg.Done()//withput these the program hangs for ever at wg.Wait() because the cpunter never reaches the zero (this is called the deadlock)
 	fmt.Println("started downloading", filename)
 	time.Sleep(300 * time.Millisecond)
 	fmt.Println("finished downloading", filename)
+	
 }
 
 func main(){

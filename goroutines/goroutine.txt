@@ -1,0 +1,30 @@
+package main
+
+import (
+    "fmt"
+    "sync"
+    "time"
+)
+
+func download(fileName string, wg *sync.Waitgroup){
+    defer wg.Done()
+    println("the file is started downloading",fileName)
+    time.Sleep(300 *time.Millisecond)
+    fmt.Println("finished download:",fileName)
+}
+
+func main(){
+    var wg *sync.WaitGroup
+    files := []string{
+        "file.txt","image.png","mod.apk"
+    }
+    for _,file := range files{
+        wg.Add(1)
+        go download(file, &wg)
+    }
+
+    fmt.Println("all downloads started — waiting...")
+    wg.Wait() // main blocks here until all 4 goroutines call wg.Done()
+    fmt.Println("all downloads complete")
+}
+
